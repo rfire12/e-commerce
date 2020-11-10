@@ -6,4 +6,6 @@
     <string name="login">Login</string>
     <string name="forgot_pass">Forgot Password</string>
     <string name="register_now">Register Now</string>
+    <string name="nav_open">Nav Open</string>
+    <string name="nav_close">Nav Close</string>
 </resources>
