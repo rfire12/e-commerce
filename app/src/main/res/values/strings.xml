@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">E-Commerce</string>
     <string name="cart">cart</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_pass">Enter Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_pass">Forgot Password</string>
+    <string name="register_now">Register Now</string>
 </resources>
