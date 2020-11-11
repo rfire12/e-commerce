@@ -15,13 +15,12 @@
             android:id="@+id/product_toolbar"
             android:icon="@drawable/ic_product"
             android:title="Product" />
-    </group>
-    <menu>
         <item
             android:id="@+id/list_os_toolbar"
             android:icon="@drawable/ic_list"
             android:title="List OS" />
-    </menu>
+    </group>
+
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/help_toolbar"

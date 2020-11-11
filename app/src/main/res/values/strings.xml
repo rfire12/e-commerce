@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">E-Commerce</string>
     <string name="cart">cart</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_user">Enter User</string>
     <string name="enter_email">Enter Email</string>
     <string name="enter_pass">Enter Password</string>
+    <string name="confirm_pass">Confirm Password</string>
+    <string name="confirm_contact">Enter Contact</string>
+    <string name="register">Register</string>
     <string name="login">Login</string>
     <string name="forgot_pass">Forgot Password</string>
     <string name="register_now">Register Now</string>
@@ -10,4 +15,5 @@
     <string name="login_now">Login Now</string>
     <string name="nav_open">Nav Open</string>
     <string name="nav_close">Nav Close</string>
+
 </resources>
