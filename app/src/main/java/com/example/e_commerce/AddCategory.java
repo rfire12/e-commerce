@@ -9,8 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import retrofit2.Retrofit;
 
 import java.io.File;
@@ -19,10 +25,12 @@ public class AddCategory extends AppCompatActivity {
 
     Button image_select, save, cancel;
     ImageView imageCat;
+    StorageReference mStorageRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_add_category);
         imageCat = findViewById(R.id.create_cat_img);
         image_select = findViewById(R.id.select_img_btn);
@@ -47,7 +55,10 @@ public class AddCategory extends AppCompatActivity {
 
             }
         });
+
+        mStorageRef = FirebaseStorage.getInstance().getReference();
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -67,6 +78,7 @@ public class AddCategory extends AppCompatActivity {
             Log.e("FileSelectorActivity", "File select error", e);
         }
     }
+
     public String getPathFromURI(Uri contentUri) {
         String res = null;
         String[] proj = {MediaStore.Images.Media.DATA};
