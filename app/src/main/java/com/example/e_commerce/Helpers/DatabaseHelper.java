@@ -22,7 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         // Here goes table creation
         sqLiteDatabase.execSQL("create table categories (_id integer primary key autoincrement, name varchar(256) not null unique, image text)");
-        sqLiteDatabase.execSQL("create table products (_id varchar(256) primary key, name varchar(256) not null, description text not null, price float not null, categoryId integer, image text not null, foreign key(categoryId) references categories(_id))");
+        sqLiteDatabase.execSQL("create table products (_id varchar(256) primary key, name varchar(256) not null, description text not null, price float not null, categoryId integer, image text, foreign key(categoryId) references categories(_id))");
     }
 
     @Override
