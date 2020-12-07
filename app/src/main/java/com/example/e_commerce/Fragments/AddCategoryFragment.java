@@ -54,7 +54,7 @@ public class AddCategoryFragment extends Fragment {
         save.setOnClickListener(v -> {
             DatabaseService databaseService = new DatabaseService(getContext());
             databaseService.createCategory(new Category(txtName.getText().toString(), category.getImage()));
-            Toast.makeText(getContext(), "Category added", Toast.LENGTH_SHORT);
+            Toast.makeText(getContext(), "Category added", Toast.LENGTH_SHORT).show();
             getFragmentManager().beginTransaction().replace(R.id.frame_container, new CategoryListFragment()).commit();
         });
 
@@ -70,12 +70,13 @@ public class AddCategoryFragment extends Fragment {
         InputStream imageStream;
 
         try {
-            imageCat.setImageURI(data.getData());
             imageStream = this.getActivity().getContentResolver().openInputStream(data.getData());
             Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+            imageCat.setImageBitmap(selectedImage);
             category.setImage(Encoding.encodeToBase64(selectedImage));
+            Toast.makeText(getContext(), category.getImage() + "HELLO", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
-
+            Log.e("FileSelectorActivity", "File select error", e);
         }
     }
 }

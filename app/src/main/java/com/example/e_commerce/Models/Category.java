@@ -8,6 +8,12 @@ public class Category {
     public Category() {
     }
 
+    public Category(int id, String name, String image) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+    }
+
     public Category(String name, String image) {
         this.name = name;
         this.image = image;

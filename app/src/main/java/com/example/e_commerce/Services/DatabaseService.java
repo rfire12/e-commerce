@@ -64,6 +64,22 @@ public class DatabaseService {
         return cursor;
     }
 
+    public ArrayList<Category> getCategoriesForListing() {
+        ArrayList<Category> categories = new ArrayList<>();
+        openConnection();
+        Cursor cursor = database.query("categories", new String[]{"_id", "name", "image"}, null, null, null, null, null);
+        if (cursor != null) cursor.moveToFirst();
+
+        while (!cursor.isAfterLast()) {
+            categories.add(new Category(cursor.getColumnIndex("_id"), cursor.getString(1), cursor.getString(2)));
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+
+        return categories;
+    }
+
     public List<String> getCategories() {
         openConnection();
         List<String> list = new ArrayList<>();
