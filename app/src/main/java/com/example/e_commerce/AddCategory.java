@@ -1,35 +1,26 @@
 package com.example.e_commerce;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.Cursor;
-import android.media.Image;
 import android.net.Uri;
-import android.provider.MediaStore;
+import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
-import retrofit2.Retrofit;
-
-import java.io.File;
 import java.util.UUID;
 
 public class AddCategory extends AppCompatActivity {
-
     Button image_select, save, cancel;
     ImageView imageCat;
     StorageReference mStorageRef;
-    Uri filePath;
+    String imgUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +36,7 @@ public class AddCategory extends AppCompatActivity {
             startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
         });
         save.setOnClickListener(v -> {
-            StorageReference ref = mStorageRef.child("images/" + UUID.randomUUID().toString());
-            ref.putFile(filePath).addOnSuccessListener(taskSnapshot -> {
-                taskSnapshot.getMetadata().getReference().getDownloadUrl().addOnSuccessListener(download -> {
-                    // Store image URL
-                });
-            });
+            // Save category to database
         });
         cancel.setOnClickListener(v -> {
 
@@ -64,10 +50,42 @@ public class AddCategory extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         try {
             if (resultCode == RESULT_OK) {
-                if (requestCode == 1) {
-                    filePath = data.getData();
-                    imageCat.setImageURI(filePath);
-                }
+                Uri filePath = data.getData();
+                imageCat.setImageURI(filePath);
+
+                // Code for showing progressDialog while uploading
+                ProgressDialog progressDialog
+                        = new ProgressDialog(this);
+                progressDialog.setTitle("Uploading...");
+                progressDialog.show();
+
+                // Uploading image
+                StorageReference ref = mStorageRef.child("images/" + UUID.randomUUID().toString());
+                ref.putFile(filePath).addOnSuccessListener(taskSnapshot -> {
+                    taskSnapshot.getMetadata().getReference().getDownloadUrl().addOnSuccessListener(download -> {
+                        imgUrl = download.toString();
+                        progressDialog.dismiss();
+                    });
+                }).addOnFailureListener(error -> {
+                    // Error, Image not uploaded
+                    progressDialog.dismiss();
+                    Toast
+                            .makeText(AddCategory.this,
+                                    "Failed " + error.getMessage(),
+                                    Toast.LENGTH_SHORT)
+                            .show();
+                })
+                        .addOnProgressListener(taskSnapshot -> {
+                            // Progress Listener for loading
+                            // percentage on the dialog box
+                            double progress
+                                    = (100.0
+                                    * taskSnapshot.getBytesTransferred()
+                                    / taskSnapshot.getTotalByteCount());
+                            progressDialog.setMessage(
+                                    "Uploaded "
+                                            + (int) progress + "%");
+                        });
             }
         } catch (Exception e) {
             Log.e("FileSelectorActivity", "File select error", e);
