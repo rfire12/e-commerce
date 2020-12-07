@@ -1,8 +1,7 @@
-package com.example.e_commerce.Adapter;
+package com.example.e_commerce.Adapters;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.e_commerce.Helpers.Encoding;
 import com.example.e_commerce.Models.Product;
 import com.example.e_commerce.R;
 
@@ -24,7 +24,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     private View.OnClickListener listener;
 
-    public ProductAdapter(Context context, ArrayList<Product> model){
+    public ProductAdapter(Context context, ArrayList<Product> model) {
         this.inflater = LayoutInflater.from(context);
         this.model = model;
     }
@@ -53,9 +53,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.productDescriptionView.setText(description);
 
         // Base 64 here
-        /*byte[] decodedString = Base64.decode(imageBase64, Base64.DEFAULT);
-        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-        holder.productImageView.setImageBitmap(decodedByte);*/
+        holder.productImageView.setImageBitmap(Encoding.decodeToBitmap(imageBase64));
     }
 
 
@@ -66,7 +64,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     @Override
     public void onClick(View view) {
-        if(listener!=null){
+        if (listener != null) {
             listener.onClick(view);
         }
     }

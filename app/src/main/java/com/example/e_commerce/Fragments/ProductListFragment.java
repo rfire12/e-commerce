@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.e_commerce.Adapter.ProductAdapter;
+import com.example.e_commerce.Adapters.ProductAdapter;
 import com.example.e_commerce.Models.Product;
 import com.example.e_commerce.R;
 import com.example.e_commerce.Services.DatabaseService;
@@ -37,7 +37,7 @@ public class ProductListFragment extends Fragment {
 
         FloatingActionButton fab = view.findViewById(R.id.floating_new_product);
         fab.setOnClickListener(v -> {
-            getFragmentManager().beginTransaction().replace(R.id.frame_container, new ProductFragment()).commit();
+            getFragmentManager().beginTransaction().replace(R.id.frame_container, new AddProductFragment()).commit();
         });
 
         return view;

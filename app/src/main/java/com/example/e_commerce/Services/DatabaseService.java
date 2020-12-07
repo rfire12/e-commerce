@@ -68,7 +68,7 @@ public class DatabaseService {
         ArrayList<Product> products = new ArrayList<>();
         openConnection();
 
-        Cursor cursor = database.query("products", new String[]{"_id", "name", "description", "image", "categoryId"}, null, null, null, null, null);
+        Cursor cursor = database.query("products", new String[]{"_id", "name", "description", "price", "image", "categoryId"}, null, null, null, null, null);
         if (cursor != null) cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             products.add(new Product(cursor.getColumnIndex("_id"), cursor.getString(1), cursor.getString(2), cursor.getFloat(3), cursor.getString(4), cursor.getInt(5)));
