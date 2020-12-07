@@ -74,7 +74,6 @@ public class AddCategoryFragment extends Fragment {
             Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
             imageCat.setImageBitmap(selectedImage);
             category.setImage(Encoding.encodeToBase64(selectedImage));
-            Toast.makeText(getContext(), category.getImage() + "HELLO", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             Log.e("FileSelectorActivity", "File select error", e);
         }
