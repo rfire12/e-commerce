@@ -21,6 +21,6 @@
     <string name="cancel">Cancel</string>
     <string name="product_name">Product Name</string>
     <string name="price">Price</string>
-    <string name="save">Save</string>
+    <string name="description">Description</string>
 
 </resources>
