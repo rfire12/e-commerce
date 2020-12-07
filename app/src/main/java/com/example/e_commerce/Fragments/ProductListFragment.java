@@ -53,15 +53,15 @@ public class ProductListFragment extends Fragment {
         productAdapter = new ProductAdapter(getContext(), productList);
         recyclerView.setAdapter(productAdapter);
 
-        /*productAdapter.setOnclickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String nombre = productList.get(recyclerView.getChildAdapterPosition(view)).getName();
-                txtnombre.setText(nombre);
-                Toast.makeText(getContext(), "Seleccionó: "+listaPersonas.get(recyclerViewPersonas.getChildAdapterPosition(view)).getNombre(), Toast.LENGTH_SHORT).show();
+        productAdapter.setOnclickListener(v -> {
+            Product product = productList.get(recyclerView.getChildAdapterPosition(v));
 
-                interfaceComunicaFragments.enviarPersona(listaPersonas.get(recyclerViewPersonas.getChildAdapterPosition(view)));
-            }
-        });*/
+            Bundle bundle = new Bundle();
+            bundle.putInt("id", product.getId());
+
+            AddProductFragment addProductFragment = new AddProductFragment();
+            addProductFragment.setArguments(bundle);
+            getFragmentManager().beginTransaction().replace(R.id.frame_container, addProductFragment).commit();
+        });
     }
 }
