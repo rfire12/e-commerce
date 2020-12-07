@@ -157,4 +157,14 @@ public class DatabaseService {
 
         database.insert("users", null, contentValues);
     }
+
+    public User login(String email, String password) {
+        Cursor cursor = database.rawQuery("select * from users where email = '" + email + "' and password = '" + password + "'", null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            return new User(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5));
+        } else {
+            return null;
+        }
+    }
 }
