@@ -27,7 +27,8 @@
             android:layout_toEndOf="@id/productImageView"
             android:layout_toRightOf="@id/productImageView"
             android:text="TextView"
-            android:textSize="16dp" />
+            android:textSize="16dp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/productPriceView"

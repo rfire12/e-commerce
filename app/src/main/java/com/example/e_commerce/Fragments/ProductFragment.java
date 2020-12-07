@@ -17,14 +17,16 @@ import com.example.e_commerce.R;
 import java.util.ArrayList;
 
 public class ProductFragment extends Fragment {
-
-    ProductAdapter productAdapter;
     RecyclerView recyclerView;
-    ArrayList<Product> productList;
+    Product product = new Product();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.product_fragment, container, false);
+        View view = inflater.inflate(R.layout.product_fragment, container, false);
+
+
+
+        return view;
     }
 }

@@ -10,7 +10,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static DatabaseHelper instance;
 
     public DatabaseHelper(@Nullable Context context) {
-        super(context, "ecommerce.db", null, 1);
+        super(context, "ecommerce.db", null, 2);
     }
 
     public static synchronized DatabaseHelper getInstance(Context context) {
@@ -20,7 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table categories (_id integer primary key autoincrement, name varchar(128) not null, image text not null)");
+        sqLiteDatabase.execSQL("create table categories (_id integer primary key autoincrement, name varchar(128) not null unique, image text not null)");
         sqLiteDatabase.execSQL("create table products (_id integer primary key autoincrement, name varchar(128) not null, description text not null, price float not null, image text not null, categoryId integer, foreign key(categoryId) references categories(_id))");
     }
 

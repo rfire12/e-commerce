@@ -64,6 +64,22 @@ public class DatabaseService {
         return cursor;
     }
 
+    public ArrayList<Product> getProductsForListing() {
+        ArrayList<Product> products = new ArrayList<>();
+        openConnection();
+
+        Cursor cursor = database.query("products", new String[]{"_id", "name", "description", "image", "categoryId"}, null, null, null, null, null);
+        if (cursor != null) cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            products.add(new Product(cursor.getColumnIndex("_id"), cursor.getString(1), cursor.getString(2), cursor.getFloat(3), cursor.getString(4), cursor.getInt(5)));
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+
+        return products;
+    }
+
     public ArrayList<Category> getCategoriesForListing() {
         ArrayList<Category> categories = new ArrayList<>();
         openConnection();

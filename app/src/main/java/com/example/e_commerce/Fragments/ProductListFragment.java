@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.e_commerce.Adapter.ProductAdapter;
 import com.example.e_commerce.Models.Product;
 import com.example.e_commerce.R;
+import com.example.e_commerce.Services.DatabaseService;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -32,15 +34,21 @@ public class ProductListFragment extends Fragment {
 
         loadProducts();
         displayData();
+
+        FloatingActionButton fab = view.findViewById(R.id.floating_new_product);
+        fab.setOnClickListener(v -> {
+            getFragmentManager().beginTransaction().replace(R.id.frame_container, new ProductFragment()).commit();
+        });
+
         return view;
     }
 
-    public void loadProducts(){
-        productList.add(new Product("Dell PC","i7 1T SSD",2000, null, 0));
-        productList.add(new Product("HP PC","i5 256T SSD",300, null, 0));
+    public void loadProducts() {
+        DatabaseService databaseService = new DatabaseService(getContext());
+        productList = databaseService.getProductsForListing();
     }
 
-    private void displayData(){
+    private void displayData() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         productAdapter = new ProductAdapter(getContext(), productList);
         recyclerView.setAdapter(productAdapter);
