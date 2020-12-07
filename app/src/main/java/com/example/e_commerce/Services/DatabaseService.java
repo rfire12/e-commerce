@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.e_commerce.Helpers.DatabaseHelper;
 import com.example.e_commerce.Models.Category;
 import com.example.e_commerce.Models.Product;
+import com.example.e_commerce.Models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -142,5 +143,18 @@ public class DatabaseService {
         contentValues.put("name", category.getName());
         contentValues.put("image", category.getImage());
         database.update("categories", contentValues, "_id = " + category.getId(), null);
+    }
+
+    public void registerUser(User user) {
+        openConnection();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", user.getName());
+        contentValues.put("username", user.getUsername());
+        contentValues.put("email", user.getEmail());
+        contentValues.put("password", user.getPassword());
+        contentValues.put("contact", user.getContact());
+
+        database.insert("users", null, contentValues);
     }
 }
