@@ -4,8 +4,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import com.example.e_commerce.Helpers.DatabaseHelper;
+import com.example.e_commerce.Helpers.Encoding;
 import com.example.e_commerce.Models.Category;
 import com.example.e_commerce.Models.Product;
 import com.example.e_commerce.Models.User;
@@ -166,5 +170,13 @@ public class DatabaseService {
         } else {
             return null;
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public String updatePassword(String email) {
+        openConnection();
+        String newPassword = Encoding.generateRandomPassword();
+        database.execSQL("update users set password = '" + newPassword + "' where email = '" + email + "'");
+        return newPassword;
     }
 }

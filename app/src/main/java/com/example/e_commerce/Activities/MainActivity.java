@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -98,7 +100,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 newFragment = new ProfileFragment();
                 break;
             case R.id.logout_drawer:
-                System.out.println("Close session");
+                Toast.makeText(MainActivity.this, "Logged out", Toast.LENGTH_SHORT);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
                 break;
         }
 
