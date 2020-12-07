@@ -19,5 +19,7 @@
     <string name="select_image">Select Image</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="product_name">Product Name</string>
+    <string name="price">Price</string>
 
 </resources>
