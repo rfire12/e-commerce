@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import com.example.e_commerce.R;
 
 public class ProfileFragment extends Fragment {
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

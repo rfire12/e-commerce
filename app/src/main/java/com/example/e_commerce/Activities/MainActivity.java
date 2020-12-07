@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -22,26 +23,24 @@ import com.example.e_commerce.Fragments.ProfileFragment;
 import com.example.e_commerce.R;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
-{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar toolbar;
     private DrawerLayout drawer;
     private NavigationView navigationView;
 
     private FragmentManager fragmentManager;
-
+    ImageView imgUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        imgUser = findViewById(R.id.img_user);
+
         loadDrawer();
         loadMainFragment();
-
-
-
     }
 
     @Override
@@ -88,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentManager = getSupportFragmentManager();
         Fragment newFragment = new MainFragment(); // Default to home fragment
 
-        switch ( item.getItemId() ) {
+        switch (item.getItemId()) {
             case R.id.category_drawer:
                 newFragment = new CategoryListFragment();
                 break;
