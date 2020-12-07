@@ -1,4 +1,4 @@
-package com.example.e_commerce;
+package com.example.e_commerce.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,26 +8,27 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class LoginActivity extends AppCompatActivity {
+import com.example.e_commerce.R;
 
-    private Button loginButton;
+public class SignUpActivity extends AppCompatActivity {
+
+    private Button registerButton;
     private TextView forgotPassTextView;
-    private TextView signUpTextView;
+    private TextView loginNowTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        //getSupportActionBar().hide(); // Hide header
+        setContentView(R.layout.activity_sign_up);
 
-        loginButton = findViewById(R.id.loginButton);
+        registerButton = findViewById(R.id.registerButton);
         forgotPassTextView = findViewById(R.id.forgotPassTextView);
-        signUpTextView = findViewById(R.id.signUpTextView);
+        loginNowTextView = findViewById(R.id.loginNowTextView);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -35,15 +36,15 @@ public class LoginActivity extends AppCompatActivity {
         forgotPassTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                Intent intent = new Intent(SignUpActivity.this, ForgotPasswordActivity.class);
                 startActivity(intent);
             }
         });
 
-        signUpTextView.setOnClickListener(new View.OnClickListener() {
+        loginNowTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });

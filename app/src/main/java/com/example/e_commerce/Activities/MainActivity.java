@@ -1,4 +1,4 @@
-package com.example.e_commerce;
+package com.example.e_commerce.Activities;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.view.MenuInflater;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.example.e_commerce.R;
 
 public class MainActivity extends AppCompatActivity {
 

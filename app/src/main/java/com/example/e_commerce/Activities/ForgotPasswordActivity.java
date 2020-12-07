@@ -1,4 +1,4 @@
-package com.example.e_commerce;
+package com.example.e_commerce.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.e_commerce.R;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
 
