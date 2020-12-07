@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.AddProduct"></activity>
-        <activity android:name=".Activities.AddCategory" />
         <activity android:name=".Activities.CategoryActivity" />
         <activity android:name=".Activities.SignUpActivity" />
         <activity android:name=".Activities.ForgotPasswordActivity" />
