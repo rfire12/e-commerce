@@ -22,6 +22,7 @@ public class CategoryListFragment extends Fragment {
     FloatingActionButton floatCreate;
     RecyclerView recyclerView;
     ArrayList<Category> categories;
+    CategoryAdapter categoryAdapter;
 
     @Nullable
     @Override
@@ -42,9 +43,7 @@ public class CategoryListFragment extends Fragment {
 
         categories = databaseService.getCategoriesForListing();
 
-        CategoryAdapter categoryAdapter = new CategoryAdapter(categories, getContext());
-
-        recyclerView.setAdapter(categoryAdapter);
+        categoryAdapter = new CategoryAdapter(getContext(), categories);
 
         categoryAdapter.setOnClickListener(v -> {
             Category category = categories.get(recyclerView.getChildAdapterPosition(v));
@@ -56,6 +55,8 @@ public class CategoryListFragment extends Fragment {
             addCategoryFragment.setArguments(bundle);
             getFragmentManager().beginTransaction().replace(R.id.frame_container, addCategoryFragment).commit();
         });
+
+        recyclerView.setAdapter(categoryAdapter);
 
         return view;
     }

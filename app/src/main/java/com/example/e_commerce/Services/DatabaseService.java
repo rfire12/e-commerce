@@ -87,7 +87,7 @@ public class DatabaseService {
         if (cursor != null) cursor.moveToFirst();
 
         while (!cursor.isAfterLast()) {
-            categories.add(new Category(cursor.getColumnIndex("_id"), cursor.getString(1), cursor.getString(2)));
+            categories.add(new Category(cursor.getInt(0), cursor.getString(1), cursor.getString(2)));
             cursor.moveToNext();
         }
 
@@ -121,6 +121,7 @@ public class DatabaseService {
         contentValues.put("description", product.getDescription());
         contentValues.put("price", product.getPrice());
         contentValues.put("image", product.getImage());
+        contentValues.put("categoryId", product.getCategoryId());
         database.update("products", contentValues, "_id = " + product.getId(), null);
     }
 

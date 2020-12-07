@@ -17,33 +17,33 @@ import com.example.e_commerce.R;
 import java.util.ArrayList;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyViewHolder> implements View.OnClickListener {
-    ArrayList<Category> categories;
-    Context context;
-    View.OnClickListener listener;
+    LayoutInflater inflater;
+    ArrayList<Category> model;
 
-    public CategoryAdapter(ArrayList<Category> categories, Context context) {
-        this.categories = categories;
-        this.context = context;
+    private View.OnClickListener listener;
+
+    public CategoryAdapter(Context context, ArrayList<Category> model) {
+        this.inflater = LayoutInflater.from(context);
+        this.model = model;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.category_item, parent, false);
-
-        MyViewHolder holder = new MyViewHolder(view);
-        return holder;
+        View view = inflater.inflate(R.layout.category_item, parent, false);
+        view.setOnClickListener(this);
+        return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Category category = categories.get(position);
+        Category category = model.get(position);
         holder.categoryImage.setImageBitmap(Encoding.decodeToBitmap(category.getImage()));
         holder.categoryName.setText(category.getName());
     }
 
     @Override
     public int getItemCount() {
-        return categories.size();
+        return model.size();
     }
 
     @Override

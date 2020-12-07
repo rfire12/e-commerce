@@ -51,7 +51,6 @@ public class ProductListFragment extends Fragment {
     private void displayData() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         productAdapter = new ProductAdapter(getContext(), productList);
-        recyclerView.setAdapter(productAdapter);
 
         productAdapter.setOnClickListener(v -> {
             Product product = productList.get(recyclerView.getChildAdapterPosition(v));
@@ -63,5 +62,7 @@ public class ProductListFragment extends Fragment {
             addProductFragment.setArguments(bundle);
             getFragmentManager().beginTransaction().replace(R.id.frame_container, addProductFragment).commit();
         });
+
+        recyclerView.setAdapter(productAdapter);
     }
 }
