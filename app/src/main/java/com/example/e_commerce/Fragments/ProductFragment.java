@@ -8,10 +8,19 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.e_commerce.Adapter.ProductAdapter;
+import com.example.e_commerce.Models.Product;
 import com.example.e_commerce.R;
 
+import java.util.ArrayList;
+
 public class ProductFragment extends Fragment {
+
+    ProductAdapter productAdapter;
+    RecyclerView recyclerView;
+    ArrayList<Product> productList;
 
     @Nullable
     @Override
