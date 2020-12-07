@@ -51,6 +51,7 @@
         android:ems="10"
         android:hint="@string/enter_pass"
         android:inputType="textPersonName"
+        android:password="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_user_email" />
@@ -88,6 +89,7 @@
         android:ems="10"
         android:hint="@string/confirm_pass"
         android:inputType="textPersonName"
+        android:password="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_user_password" />
