@@ -33,7 +33,8 @@
             app:layout_constraintTop_toBottomOf="@+id/cart_item_name"
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/cart_item_img"/>
+            app:layout_constraintStart_toEndOf="@+id/cart_item_img"
+            android:textColor="@color/colorPrimaryDark"/>
 
     <Button
             android:text="@string/delete"
@@ -43,16 +44,22 @@
             app:layout_constraintTop_toBottomOf="@+id/cart_item_price"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="8dp"
-            style="@style/Widget.AppCompat.Button"/>
+            style="@style/Widget.AppCompat.Button"
+            android:background="@drawable/btn_rounded"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/colorPrimaryDark"/>
 
     <Button
             android:text="@string/decrease"
-            android:layout_width="50dp"
+            android:layout_width="64dp"
             android:layout_height="wrap_content"
             android:id="@+id/decrease_amount_btn"
             app:layout_constraintTop_toBottomOf="@+id/cart_item_price"
             android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@+id/cart_item_price"/>
+            app:layout_constraintStart_toStartOf="@+id/cart_item_price"
+            android:textColor="@color/colorPrimaryDark"
+            android:background="@drawable/btn_rounded"
+            android:backgroundTint="@color/white"/>
 
     <TextView
             android:text="@string/_0"
@@ -67,11 +74,14 @@
 
     <Button
             android:text="@string/increase"
-            android:layout_width="50dp"
+            android:layout_width="64dp"
             android:layout_height="wrap_content"
             android:id="@+id/increase_amount_btn"
             app:layout_constraintTop_toBottomOf="@+id/cart_item_price"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toEndOf="@+id/cart_item_amount"
-            android:layout_marginStart="4dp"/>
+            android:layout_marginStart="4dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:background="@drawable/btn_rounded"
+            android:backgroundTint="@color/white"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

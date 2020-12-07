@@ -35,7 +35,7 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:gravity="start|top"
-            android:hint="Product Description"
+            android:hint="@string/product_description"
             android:inputType="textMultiLine"
             android:lines="3" />
 
@@ -54,26 +54,32 @@
             android:layout_marginTop="8dp" />
 
         <Button
-            android:id="@+id/save_product_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/save" />
+                android:id="@+id/save_product_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/save"
+                android:textColor="@color/white"
+                android:background="@drawable/btn_rounded"
+                android:backgroundTint="@color/colorPrimaryDark"/>
 
         <Button
             android:id="@+id/update_product_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Update"
+            android:text="@string/update"
             android:visibility="gone" />
 
         <Button
-            android:id="@+id/cancel_product_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/cancel" />
+                android:id="@+id/cancel_product_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/cancel"
+                android:textColor="@color/white"
+                android:background="@drawable/btn_rounded"
+                android:backgroundTint="@color/colorPrimaryDark"/>
     </LinearLayout>
 
 </RelativeLayout>

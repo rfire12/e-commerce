@@ -30,5 +30,7 @@
     <string name="delete">Delete</string>
     <string name="increase">+</string>
     <string name="_0">0</string>
+    <string name="product_description">Product Description</string>
+    <string name="update">Update</string>
 
 </resources>

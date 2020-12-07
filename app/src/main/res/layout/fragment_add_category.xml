@@ -19,14 +19,17 @@
         android:id="@+id/txt_category_name"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/select_image"
-        android:id="@+id/btn_select_category_img"
-        app:layout_constraintTop_toTopOf="@+id/create_cat_img"
-        app:layout_constraintBottom_toBottomOf="@+id/create_cat_img"
-        app:layout_constraintStart_toEndOf="@+id/create_cat_img"
-        android:layout_marginStart="16dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_image"
+            android:id="@+id/btn_select_category_img"
+            app:layout_constraintTop_toTopOf="@+id/create_cat_img"
+            app:layout_constraintBottom_toBottomOf="@+id/create_cat_img"
+            app:layout_constraintStart_toEndOf="@+id/create_cat_img"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/btn_rounded"
+            android:backgroundTint="#FFFFFF"
+            android:textColor="@color/colorPrimaryDark"/>
 
     <ImageView
         android:layout_width="80dp"
@@ -38,25 +41,31 @@
         android:id="@+id/create_cat_img"/>
 
     <Button
-        android:text="@string/save"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_save_cat"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_cat_img"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_cancel_cat"
-        android:layout_marginStart="16dp"/>
+            android:text="@string/save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_save_cat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/create_cat_img"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/btn_cancel_cat"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:background="@drawable/btn_rounded"
+            android:backgroundTint="@color/white"/>
 
     <Button
-        android:text="@string/cancel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_cancel_cat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_cat_img"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintStart_toEndOf="@+id/btn_save_cat"/>
+            android:text="@string/cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_cancel_cat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/create_cat_img"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@+id/btn_save_cat"
+            android:textColor="@color/colorPrimaryDark"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/btn_rounded"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
