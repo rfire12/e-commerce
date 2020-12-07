@@ -53,7 +53,7 @@ public class ProductListFragment extends Fragment {
         productAdapter = new ProductAdapter(getContext(), productList);
         recyclerView.setAdapter(productAdapter);
 
-        productAdapter.setOnclickListener(v -> {
+        productAdapter.setOnClickListener(v -> {
             Product product = productList.get(recyclerView.getChildAdapterPosition(v));
 
             Bundle bundle = new Bundle();

@@ -25,7 +25,7 @@ import java.io.InputStream;
 
 public class AddCategoryFragment extends Fragment {
     EditText txtName;
-    Button image_select, save, cancel;
+    Button save, cancel, update;
     ImageView imageCat;
     Category category = new Category();
 
@@ -40,10 +40,11 @@ public class AddCategoryFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_category, container, false);
 
+        DatabaseService databaseService = new DatabaseService(getContext());
+
         txtName = view.findViewById(R.id.txt_category_name);
         imageCat = view.findViewById(R.id.create_cat_img);
-        image_select = view.findViewById(R.id.btn_select_category_img);
-        image_select.setOnClickListener(v -> {
+        imageCat.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
             intent.addCategory(Intent.CATEGORY_OPENABLE);
             intent.setType("image/*");
@@ -52,7 +53,6 @@ public class AddCategoryFragment extends Fragment {
 
         save = view.findViewById(R.id.btn_save_cat);
         save.setOnClickListener(v -> {
-            DatabaseService databaseService = new DatabaseService(getContext());
             databaseService.createCategory(new Category(txtName.getText().toString(), category.getImage()));
             Toast.makeText(getContext(), "Category added", Toast.LENGTH_SHORT).show();
             getFragmentManager().beginTransaction().replace(R.id.frame_container, new CategoryListFragment()).commit();
@@ -60,6 +60,27 @@ public class AddCategoryFragment extends Fragment {
 
         cancel = view.findViewById(R.id.btn_cancel_cat);
         cancel.setOnClickListener(v -> getFragmentManager().beginTransaction().replace(R.id.frame_container, new CategoryListFragment()).commit());
+
+        update = view.findViewById(R.id.btn_update_cat);
+
+        Bundle bundle = this.getArguments();
+
+        if (bundle != null) {
+            category.setId(bundle.getInt("id"));
+            category = databaseService.getCategoryById(category.getId());
+
+            txtName.setText(category.getName());
+            imageCat.setImageBitmap(Encoding.decodeToBitmap(category.getImage()));
+
+            save.setVisibility(View.GONE);
+            update.setVisibility(View.VISIBLE);
+        }
+
+        update.setOnClickListener(v -> {
+            databaseService.updateCategory(new Category(category.getId(), txtName.getText().toString(), category.getImage()));
+            Toast.makeText(getContext(), "Category updated", Toast.LENGTH_SHORT).show();
+            getFragmentManager().beginTransaction().replace(R.id.frame_container, new CategoryListFragment()).commit();
+        });
 
         return view;
     }

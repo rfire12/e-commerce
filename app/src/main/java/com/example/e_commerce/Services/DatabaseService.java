@@ -124,9 +124,22 @@ public class DatabaseService {
         database.update("products", contentValues, "_id = " + product.getId(), null);
     }
 
+    public Category getCategoryById(int id) {
+        Cursor cursor = database.rawQuery("select * from categories where _id = " + id, null);
+        cursor.moveToFirst();
+        return new Category(cursor.getInt(0), cursor.getString(1), cursor.getString(2));
+    }
+
     public Product getProductById(int id) {
         Cursor cursor = database.rawQuery("select * from products where _id = " + id, null);
         cursor.moveToFirst();
         return new Product(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getFloat(3), cursor.getString(4), cursor.getInt(5));
+    }
+
+    public void updateCategory(Category category) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", category.getName());
+        contentValues.put("image", category.getImage());
+        database.update("categories", contentValues, "_id = " + category.getId(), null);
     }
 }

@@ -16,11 +16,12 @@ import com.example.e_commerce.R;
 
 import java.util.ArrayList;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyViewHolder> {
+public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyViewHolder> implements View.OnClickListener {
     ArrayList<Category> categories;
     Context context;
+    View.OnClickListener listener;
 
-    public CategoryAdapter(ArrayList<Category> categories, Context context){
+    public CategoryAdapter(ArrayList<Category> categories, Context context) {
         this.categories = categories;
         this.context = context;
     }
@@ -45,12 +46,23 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         return categories.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    @Override
+    public void onClick(View view) {
+        if (listener != null) {
+            listener.onClick(view);
+        }
+    }
+
+    public void setOnClickListener(View.OnClickListener listener) {
+        this.listener = listener;
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         // Fields
         ImageView categoryImage;
         TextView categoryName;
 
-        public MyViewHolder(View view){
+        public MyViewHolder(View view) {
             super(view);
             categoryImage = view.findViewById(R.id.cat_image);
             categoryName = view.findViewById(R.id.cat_name);

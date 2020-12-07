@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SimpleCursorAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,13 +11,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_commerce.Adapters.CategoryAdapter;
+import com.example.e_commerce.Models.Category;
 import com.example.e_commerce.R;
 import com.example.e_commerce.Services.DatabaseService;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+
 public class CategoryListFragment extends Fragment {
     FloatingActionButton floatCreate;
     RecyclerView recyclerView;
+    ArrayList<Category> categories;
 
     @Nullable
     @Override
@@ -37,7 +40,22 @@ public class CategoryListFragment extends Fragment {
 
         DatabaseService databaseService = new DatabaseService(getContext());
 
-        recyclerView.setAdapter(new CategoryAdapter(databaseService.getCategoriesForListing(), getContext()));
+        categories = databaseService.getCategoriesForListing();
+
+        CategoryAdapter categoryAdapter = new CategoryAdapter(categories, getContext());
+
+        recyclerView.setAdapter(categoryAdapter);
+
+        categoryAdapter.setOnClickListener(v -> {
+            Category category = categories.get(recyclerView.getChildAdapterPosition(v));
+
+            Bundle bundle = new Bundle();
+            bundle.putInt("id", category.getId());
+
+            AddCategoryFragment addCategoryFragment = new AddCategoryFragment();
+            addCategoryFragment.setArguments(bundle);
+            getFragmentManager().beginTransaction().replace(R.id.frame_container, addCategoryFragment).commit();
+        });
 
         return view;
     }

@@ -37,7 +37,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         return new ViewHolder(view);
     }
 
-    public void setOnclickListener(View.OnClickListener listener) {
+    public void setOnClickListener(View.OnClickListener listener) {
         this.listener = listener;
     }
 

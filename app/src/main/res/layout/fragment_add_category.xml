@@ -1,71 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <EditText
+    android:layout_height="match_parent"
+    android:layout_margin="16dp">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/name"
-        android:inputType="text"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:id="@+id/txt_category_name"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/txt_category_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/select_image"
-            android:id="@+id/btn_select_category_img"
-            app:layout_constraintTop_toTopOf="@+id/create_cat_img"
-            app:layout_constraintBottom_toBottomOf="@+id/create_cat_img"
-            app:layout_constraintStart_toEndOf="@+id/create_cat_img"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/btn_rounded"
-            android:backgroundTint="#FFFFFF"
-            android:textColor="@color/colorPrimaryDark"/>
-
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:layout_constraintTop_toBottomOf="@+id/txt_category_name"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:id="@+id/create_cat_img"/>
-
-    <Button
-            android:text="@string/save"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_save_cat"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/create_cat_img"
             android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/btn_cancel_cat"
-            android:layout_marginStart="16dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@drawable/btn_rounded"
-            android:backgroundTint="@color/white"/>
+            android:hint="@string/name"
+            android:inputType="text" />
 
-    <Button
-            android:text="@string/cancel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_cancel_cat"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/create_cat_img"
+        <ImageView
+            android:id="@+id/create_cat_img"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            app:layout_constraintStart_toEndOf="@+id/btn_save_cat"
-            android:textColor="@color/colorPrimaryDark"
-            android:backgroundTint="@color/white"
-            android:background="@drawable/btn_rounded"/>
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_product" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_cancel_cat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_rounded"
+                android:backgroundTint="@color/white"
+                android:text="@string/cancel"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <Button
+                android:id="@+id/btn_save_cat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/btn_rounded"
+                android:backgroundTint="@color/white"
+                android:text="@string/save"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <Button
+                android:id="@+id/btn_update_cat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/btn_rounded"
+                android:backgroundTint="@color/white"
+                android:text="@string/update"
+                android:textColor="@color/colorPrimaryDark"
+                android:visibility="gone" />
+        </LinearLayout>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
