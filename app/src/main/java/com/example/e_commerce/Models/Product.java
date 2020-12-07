@@ -8,8 +8,10 @@ public class Product {
     String image;
     int categoryId;
 
-    public Product(int id, String name, String description, float price, String image, int categoryId) {
-        this.id = id;
+    public Product() {
+    }
+
+    public Product(String name, String description, float price, String image, int categoryId) {
         this.name = name;
         this.description = description;
         this.price = price;
