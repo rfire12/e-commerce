@@ -25,5 +25,10 @@
     <string name="main_fragment">Main Fragment</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="proceed_to_checkout">Proceed To Checkout</string>
+    <string name="decrease">-</string>
+    <string name="delete">Delete</string>
+    <string name="increase">+</string>
+    <string name="_0">0</string>
 
 </resources>
