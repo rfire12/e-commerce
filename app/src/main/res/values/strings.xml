@@ -15,5 +15,9 @@
     <string name="login_now">Login Now</string>
     <string name="nav_open">Nav Open</string>
     <string name="nav_close">Nav Close</string>
+    <string name="name">Name</string>
+    <string name="select_image">Select Image</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 
 </resources>
