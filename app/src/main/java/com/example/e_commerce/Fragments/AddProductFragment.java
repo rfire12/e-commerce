@@ -33,7 +33,7 @@ public class AddProductFragment extends Fragment {
     Product product = new Product();
     EditText txtName, txtDescription, txtPrice;
     ImageView imageProd;
-    Button save, cancel;
+    Button save, cancel, update;
     ArrayList<Category> categories;
     List<String> categoryNames;
     Spinner spnCategory;
@@ -77,6 +77,31 @@ public class AddProductFragment extends Fragment {
             getFragmentManager().beginTransaction().replace(R.id.frame_container, new ProductListFragment()).commit();
         });
 
+        update = view.findViewById(R.id.update_product_btn);
+
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            product.setId(bundle.getInt("id"));
+            product = databaseService.getProductById(product.getId());
+
+            txtName.setText(product.getName());
+            txtPrice.setText(Float.toString(product.getPrice()));
+            txtDescription.setText(product.getDescription());
+            imageProd.setImageBitmap(Encoding.decodeToBitmap(product.getImage()));
+            spnCategory.post(() -> spnCategory.setSelection(arrayAdapter.getPosition(getNameFromId(product.getCategoryId()))));
+
+            save.setVisibility(View.GONE);
+
+            // Update, visible
+            update.setVisibility(View.VISIBLE);
+        }
+
+        update.setOnClickListener(v -> {
+            databaseService.updateProduct(new Product(product.getId(), txtName.getText().toString(), txtDescription.getText().toString(), Float.parseFloat(txtPrice.getText().toString()), product.getImage(), getIdFromName(spnCategory.getSelectedItem().toString())));
+            Toast.makeText(getContext(), "Product updated", Toast.LENGTH_SHORT).show();
+            getFragmentManager().beginTransaction().replace(R.id.frame_container, new ProductListFragment()).commit();
+        });
+
         return view;
     }
 
@@ -103,5 +128,15 @@ public class AddProductFragment extends Fragment {
         }
 
         return 0;
+    }
+
+    private String getNameFromId(int id) {
+        for (Category category : categories) {
+            if (id == category.getId()) {
+                return category.getName();
+            }
+        }
+
+        return "";
     }
 }

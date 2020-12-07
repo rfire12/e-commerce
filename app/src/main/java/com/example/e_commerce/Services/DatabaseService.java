@@ -71,7 +71,7 @@ public class DatabaseService {
         Cursor cursor = database.query("products", new String[]{"_id", "name", "description", "price", "image", "categoryId"}, null, null, null, null, null);
         if (cursor != null) cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            products.add(new Product(cursor.getColumnIndex("_id"), cursor.getString(1), cursor.getString(2), cursor.getFloat(3), cursor.getString(4), cursor.getInt(5)));
+            products.add(new Product(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getFloat(3), cursor.getString(4), cursor.getInt(5)));
             cursor.moveToNext();
         }
 
@@ -115,12 +115,18 @@ public class DatabaseService {
         database.delete("products", "_id = " + _id, null);
     }
 
-    public int updateProduct(Product product) {
+    public void updateProduct(Product product) {
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", product.getName());
         contentValues.put("description", product.getDescription());
         contentValues.put("price", product.getPrice());
         contentValues.put("image", product.getImage());
-        return database.update("products", contentValues, "_id = " + product.getId(), null);
+        database.update("products", contentValues, "_id = " + product.getId(), null);
+    }
+
+    public Product getProductById(int id) {
+        Cursor cursor = database.rawQuery("select * from products where _id = " + id, null);
+        cursor.moveToFirst();
+        return new Product(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getFloat(3), cursor.getString(4), cursor.getInt(5));
     }
 }
