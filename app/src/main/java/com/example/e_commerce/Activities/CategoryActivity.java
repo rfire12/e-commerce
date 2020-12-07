@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.e_commerce.Models.Category;
+import com.example.e_commerce.R;
+
 import java.util.List;
 
 public class CategoryActivity extends AppCompatActivity {

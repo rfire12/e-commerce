@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.e_commerce.R;
+
 import retrofit2.Retrofit;
 
 import java.io.File;
