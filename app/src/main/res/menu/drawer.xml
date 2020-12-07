@@ -4,34 +4,34 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/home_toolbar"
+            android:id="@+id/home_drawer"
             android:icon="@drawable/ic_home"
             android:title="Home" />
         <item
-            android:id="@+id/category_toolbar"
+            android:id="@+id/category_drawer"
             android:icon="@drawable/ic_category"
             android:title="Category" />
         <item
-            android:id="@+id/product_toolbar"
+            android:id="@+id/product_drawer"
             android:icon="@drawable/ic_product"
             android:title="Product" />
         <item
-            android:id="@+id/list_os_toolbar"
+            android:id="@+id/list_os_drawer"
             android:icon="@drawable/ic_list"
             android:title="List OS" />
     </group>
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/help_toolbar"
+            android:id="@+id/help_drawer"
             android:icon="@drawable/ic_help"
             android:title="Help" />
         <item
-            android:id="@+id/profile_toolbar"
+            android:id="@+id/profile_drawer"
             android:icon="@drawable/ic_profile"
             android:title="Profile" />
         <item
-            android:id="@+id/logout_toolbar"
+            android:id="@+id/logout_drawer"
             android:icon="@drawable/ic_logout"
             android:title="Log Out" />
     </group>

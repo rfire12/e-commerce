@@ -22,5 +22,6 @@
     <string name="product_name">Product Name</string>
     <string name="price">Price</string>
     <string name="description">Description</string>
+    <string name="main_fragment">Main Fragment</string>
 
 </resources>
